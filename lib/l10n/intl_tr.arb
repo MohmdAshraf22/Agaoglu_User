@@ -1,0 +1,16 @@
+{
+  "completed": "Tamamlandı",
+  "pending": "Beklemede",
+  "in_progress": "Devam Ediyor",
+  "approved": "Onaylandı",
+  "pendingTasks": "Bekleyen Görevler",
+  "approvedTasks": "Onaylanan Görevler",
+  "taskList": "Görev Listesi",
+  "notAssigned": "Atanmadı",
+  "assignedToYou": "Size Atandı",
+  "cancelled": "İptal Edildi",
+  "startTask": "Görevi Başlat",
+  "approveTask": "Görevi Onayla",
+  "completeTask": "Görevi Tamamla",
+  "cancelTask": "Görevi İptal Et"
+}
