@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:tasks/core/utils/api_handler.dart';
-import 'package:tasks/core/utils/constance_manger.dart';
 import 'package:tasks/modules/task/data/model/task.dart';
 import 'package:tasks/modules/task/data/repository/task_repo.dart';
 
@@ -28,16 +28,20 @@ class TaskCubit extends Cubit<TaskState> {
   }
 
   void filterTasksByStatus(bool isSelectApprovedTasks) {
-    List<TaskModel> pendingTasks = _tasks
-        .where((task) =>
-            task.status == TaskStatus.pending &&
-            task.workerId == ConstanceManger.token)
-        .toList();
-    List<TaskModel> approvedTasks = _tasks
-        .where((task) =>
-            task.status != TaskStatus.pending &&
-            task.workerId == ConstanceManger.token)
-        .toList();
+    List<TaskModel> approvedTasks = [], pendingTasks = [];
+    if (!isSelectApprovedTasks) {
+      pendingTasks = _tasks
+          .where((task) =>
+              task.status == TaskStatus.pending &&
+              task.workerId == FirebaseAuth.instance.currentUser?.uid)
+          .toList();
+    } else {
+      approvedTasks = _tasks
+          .where((task) =>
+              task.status != TaskStatus.pending &&
+              task.workerId == FirebaseAuth.instance.currentUser?.uid)
+          .toList();
+    }
     emit(FilterTasksState(
         tasks: isSelectApprovedTasks ? approvedTasks : pendingTasks));
   }
