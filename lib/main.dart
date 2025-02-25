@@ -6,8 +6,8 @@ import 'package:tasks/core/local/shared_prefrences.dart';
 import 'package:tasks/core/utils/color_manager.dart';
 import 'package:tasks/core/utils/localization_manager.dart';
 import 'package:tasks/generated/l10n.dart';
-import 'package:tasks/modules/task/presentation/cubit/task_cubit.dart';
-import 'package:tasks/modules/task/presentation/screen/tasks_screen.dart'; // Correct import
+import 'package:tasks/modules/task/cubit/task_cubit.dart';
+import 'package:tasks/modules/task/ui/screen/tasks_screen.dart'; // Correct import
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {

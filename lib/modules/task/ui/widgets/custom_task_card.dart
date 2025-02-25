@@ -30,7 +30,6 @@ class TaskCard extends StatelessWidget {
       color: ColorManager.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Column(
-        // Changed ListTile to Column for button placement
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ListTile(

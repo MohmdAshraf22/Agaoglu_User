@@ -7,8 +7,8 @@ import 'package:tasks/core/utils/text_styles_manager.dart';
 import 'package:tasks/core/widgets/widgets.dart';
 import 'package:tasks/generated/l10n.dart';
 import 'package:tasks/modules/task/data/model/task.dart';
-import 'package:tasks/modules/task/presentation/cubit/task_cubit.dart';
-import 'package:tasks/modules/task/presentation/widgets/custom_task_card.dart';
+import 'package:tasks/modules/task/cubit/task_cubit.dart';
+import 'package:tasks/modules/task/ui/widgets/custom_task_card.dart';
 
 class TaskListScreen extends StatefulWidget {
   const TaskListScreen({super.key});
