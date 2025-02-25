@@ -12,6 +12,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
 
   cupertino_icons: ^1.0.8
@@ -24,9 +26,8 @@ dependencies:
   firebase_messaging: ^15.2.2
   sizer: ^3.0.5
   shared_preferences: ^2.5.2
-  get_it:
-
   intl:
+  flutter_intl: ^0.0.1
   # firebase
 
   firebase_core: ^3.11.0
@@ -35,7 +36,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^5.0.0
 
+flutter_intl:
+  enabled: true
 
   flutter_lints: ^5.0.0
 

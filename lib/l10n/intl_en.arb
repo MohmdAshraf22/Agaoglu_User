@@ -1,0 +1,12 @@
+{
+  "completed": "Completed",
+  "pending": "Pending",
+  "in_progress": "In Progress",
+  "approved": "Approved",
+  "pendingTasks": "Pending Tasks",
+  "approvedTasks": "Approved Tasks",
+  "taskList": "Task List",
+  "notAssigned": "Not Assigned",
+  "assignedToYou": "Assigned to you",
+  "cancelled": "Cancelled"
+}

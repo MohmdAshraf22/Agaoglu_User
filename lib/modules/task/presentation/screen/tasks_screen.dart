@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sizer/sizer.dart';
 import 'package:tasks/core/utils/color_manager.dart';
 import 'package:tasks/core/utils/constance_manger.dart';
+import 'package:tasks/core/utils/text_styles_manager.dart';
+import 'package:tasks/core/widgets/widgets.dart';
+import 'package:tasks/generated/l10n.dart';
 import 'package:tasks/modules/task/data/model/task.dart';
 import 'package:tasks/modules/task/presentation/cubit/task_cubit.dart';
 
@@ -28,8 +32,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
       backgroundColor: ColorManager.greyLight,
       appBar: AppBar(
         backgroundColor: ColorManager.greyLight,
-        title: const Text("Task List",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        title: Text(S.of(context).taskList, style: TextStylesManager.authTitle),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.account_circle))
         ],
@@ -39,37 +42,47 @@ class _TaskListScreenState extends State<TaskListScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      elevation: 2,
+            child: Container(
+              padding: EdgeInsetsDirectional.symmetric(
+                horizontal: 1.w,
+                vertical: .5.h,
+              ),
+              decoration: BoxDecoration(
+                color: ColorManager.grey.withAlpha(59),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: DefaultButton(
+                      onPressed: () {},
+                      text: S.of(context).pendingTasks,
+                      color: ColorManager.transparent,
                     ),
-                    onPressed: () {},
-                    child: const Text("Pending Tasks",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold)),
                   ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[200],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      elevation: 0,
+                  SizedBox(
+                    width: 1.w,
+                  ),
+                  Expanded(
+                    child: DefaultButton(
+                      onPressed: () {},
+                      textColor: ColorManager.grey,
+                      icon: Padding(
+                        padding: EdgeInsetsDirectional.only(
+                          end: 2.w,
+                        ),
+                        child: Icon(
+                          Icons.circle_rounded,
+                          color: ColorManager.orange,
+                          size: 13.sp,
+                        ),
+                      ),
+                      text: S.of(context).approvedTasks,
+                      color: ColorManager.white,
                     ),
-                    onPressed: () {},
-                    child: const Text("Approved Tasks",
-                        style: TextStyle(fontSize: 16)),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -97,7 +110,17 @@ class _TaskListScreenState extends State<TaskListScreen> {
 class TaskCard extends StatelessWidget {
   final TaskModel task;
 
-  const TaskCard({super.key, required this.task});
+  final VoidCallback? onAccept;
+  final VoidCallback? onCancel;
+  final VoidCallback? onDone;
+
+  const TaskCard({
+    super.key,
+    required this.task,
+    this.onAccept,
+    this.onCancel,
+    this.onDone,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -106,20 +129,33 @@ class TaskCard extends StatelessWidget {
       color: ColorManager.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: ListTile(
-        contentPadding: const EdgeInsets.all(12),
-        title: Text(task.title,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+        contentPadding: EdgeInsetsDirectional.symmetric(
+          horizontal: 3.w,
+          vertical: 1.h,
+        ),
+        title: Text(task.title, style: TextStylesManager.cardTitle),
         subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text("Assigned: ${ConstanceManger.formatDateTime(task.createdAt)}",
-                style: const TextStyle(color: Colors.grey)),
-            Text(task.description,
-                style: const TextStyle(fontWeight: FontWeight.w500)),
-          ],
+            Text(S.of(context).assignedToYou,
+                style: const TextStyle(color: ColorManager.grey)),
+            Text(task.description, style: TextStylesManager.cardText),
+            if (task.block != null && task.block!.isNotEmpty)
+              Text(task.block!, style: TextStylesManager.cardText),
+            if (task.site != null && task.site!.isNotEmpty)
+              Text(task.site!, style: TextStylesManager.cardText),
+            if (task.flat != null && task.flat!.isNotEmpty)
+              Text(task.flat!, style: TextStylesManager.cardText),
+            Text(ConstanceManger.formatDateTime(task.createdAt),
+                style: TextStylesManager.caption),
+          ]
+              .expand(
+                (element) => [element, SizedBox(height: .4.h)],
+              )
+              .toList(),
         ),
         trailing: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: .6.h),
           decoration: BoxDecoration(
             color: _getStatusColor(task.status),
             borderRadius: BorderRadius.circular(10),
@@ -130,7 +166,7 @@ class TaskCard extends StatelessWidget {
                 color: ColorManager.white, fontWeight: FontWeight.bold),
           ),
         ),
-        onTap: () {},
+        onTap: onAccept,
       ),
     );
   }
@@ -147,8 +183,6 @@ class TaskCard extends StatelessWidget {
         return ColorManager.red;
       case TaskStatus.completed:
         return ColorManager.grey;
-      default:
-        return Colors.transparent;
     }
   }
 }

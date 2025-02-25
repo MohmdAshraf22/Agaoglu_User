@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasks/core/utils/color_manager.dart';
+import 'package:tasks/core/widgets/widgets.dart';
 import 'package:tasks/modules/task/data/model/task.dart';
 
 class CustomTaskCard extends StatelessWidget {
@@ -37,7 +38,7 @@ class CustomTaskCard extends StatelessWidget {
             Text(
               'Status: ${task.status.name}',
               style: TextStyle(
-                color: _getStatusColor(task.status),
+                color: getStatusColor(task.status),
               ),
             ),
             const SizedBox(height: 16),
@@ -65,22 +66,5 @@ class CustomTaskCard extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Color _getStatusColor(TaskStatus status) {
-    switch (status) {
-      case TaskStatus.pending:
-        return ColorManager.yellow;
-      case TaskStatus.approved:
-        return ColorManager.green;
-      case TaskStatus.inProgress:
-        return ColorManager.blue;
-      case TaskStatus.cancelled:
-        return ColorManager.red;
-      case TaskStatus.completed:
-        return ColorManager.grey;
-      default:
-        return Colors.transparent;
-    }
   }
 }
