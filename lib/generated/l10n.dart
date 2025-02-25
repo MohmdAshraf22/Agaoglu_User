@@ -124,6 +124,36 @@ class S {
   String get cancelled {
     return Intl.message('Cancelled', name: 'cancelled', desc: '', args: []);
   }
+
+  /// `Start Task`
+  String get startTask {
+    return Intl.message('Start Task', name: 'startTask', desc: '', args: []);
+  }
+
+  /// `Approve Task`
+  String get approveTask {
+    return Intl.message(
+      'Approve Task',
+      name: 'approveTask',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete Task`
+  String get completeTask {
+    return Intl.message(
+      'Complete Task',
+      name: 'completeTask',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Task`
+  String get cancelTask {
+    return Intl.message('Cancel Task', name: 'cancelTask', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

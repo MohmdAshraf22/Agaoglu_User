@@ -37,7 +37,7 @@ class TaskDataSourceImpl implements TaskDataSource {
       await _fireStore
           .collection(_collectionName)
           .doc(taskId)
-          .update({'status': newStatus.name});
+          .update(_toTaskStatusJson(newStatus));
       return Result.success(true);
     } on FirebaseException catch (e) {
       debugPrint('Firebase error updating task status: $e');
@@ -45,6 +45,19 @@ class TaskDataSourceImpl implements TaskDataSource {
     } catch (e) {
       debugPrint('Error updating task status: $e');
       return Result.failure('An unexpected error occurred.');
+    }
+  }
+
+  Map<String, dynamic> _toTaskStatusJson(TaskStatus status) {
+    if (status == TaskStatus.cancelled) {
+      return {
+        'status': TaskStatus.pending.name,
+        "workerName": null,
+        "workerPhoto": null,
+        "workerId": null,
+      };
+    } else {
+      return {'status': status.name};
     }
   }
 

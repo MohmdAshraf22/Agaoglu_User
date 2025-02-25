@@ -8,5 +8,9 @@
   "taskList": "Task List",
   "notAssigned": "Not Assigned",
   "assignedToYou": "Assigned to you",
-  "cancelled": "Cancelled"
+  "cancelled": "Cancelled",
+  "startTask": "Start Task",
+  "approveTask": "Approve Task",
+  "completeTask": "Complete Task",
+  "cancelTask": "Cancel Task"
 }

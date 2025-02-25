@@ -2,8 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:tasks/core/utils/api_handler.dart';
-
-// import 'package:tasks/modules/task/data/data_source/remote_data_source.dart';
+import 'package:tasks/core/utils/constance_manger.dart';
 import 'package:tasks/modules/task/data/model/task.dart';
 import 'package:tasks/modules/task/data/repository/task_repo.dart';
 
@@ -13,16 +12,34 @@ class TaskCubit extends Cubit<TaskState> {
   TaskCubit() : super(TaskInitial());
   final TaskRepository _taskRepository = TaskRepository(); // Change
 
+  List<TaskModel> _tasks = [];
+
   void getTasks() {
     emit(TaskLoading());
     _taskRepository.getTasks().listen(
       (tasks) {
-        emit(TaskLoaded(tasks: tasks));
+        _tasks = tasks;
+        emit(TaskLoaded());
       },
       onError: (error) {
         emit(TaskError(errorMessage: 'Failed to load tasks: $error'));
       },
     );
+  }
+
+  void filterTasksByStatus(bool isSelectApprovedTasks) {
+    List<TaskModel> pendingTasks = _tasks
+        .where((task) =>
+            task.status == TaskStatus.pending &&
+            task.workerId == ConstanceManger.token)
+        .toList();
+    List<TaskModel> approvedTasks = _tasks
+        .where((task) =>
+            task.status != TaskStatus.pending &&
+            task.workerId == ConstanceManger.token)
+        .toList();
+    emit(FilterTasksState(
+        tasks: isSelectApprovedTasks ? approvedTasks : pendingTasks));
   }
 
   Future<void> acceptTask(String taskId) async {
@@ -58,5 +75,11 @@ class TaskCubit extends Cubit<TaskState> {
           errorMessage: 'Failed to $action task: ${result.errorMessage}'));
       debugPrint('Failed to $action task: ${result.errorMessage}');
     }
+  }
+
+  void selectApprovedTasks(bool isSelectApprovedTasks) {
+    bool isSelectApprovedTasks0 = isSelectApprovedTasks;
+    emit(SelectApprovedTasksState(
+        isSelectApprovedTasks: isSelectApprovedTasks0));
   }
 }

@@ -78,14 +78,14 @@ Color getStatusColor(TaskStatus status) {
 String getTaskStatusLanguage(TaskStatus status, BuildContext context) {
   switch (status) {
     case TaskStatus.pending:
-      return S.of(context).pending;
+      return S.of(context).approveTask;
     case TaskStatus.approved:
-      return S.of(context).approved;
+      return S.of(context).startTask;
     case TaskStatus.inProgress:
-      return S.of(context).in_progress;
+      return S.of(context).completeTask;
     case TaskStatus.cancelled:
-      return S.of(context).cancelled;
+      return S.of(context).cancelTask;
     case TaskStatus.completed:
-      return S.of(context).completed;
+      return S.of(context).completeTask;
   }
 }
