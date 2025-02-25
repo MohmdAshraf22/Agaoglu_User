@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:tasks/core/utils/api_handler.dart';
+import 'package:tasks/core/utils/firebase_result_handler.dart';
 import 'package:tasks/modules/task/data/model/task.dart';
 
 abstract class TaskDataSource {
@@ -20,6 +20,7 @@ abstract class TaskDataSource {
 class TaskDataSourceImpl implements TaskDataSource {
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
   final String _collectionName = 'tasks';
+  final String _dashboardDetails = 'dashboardDetails';
 
   @override
   Stream<List<TaskModel>> getTasks() {
@@ -34,17 +35,27 @@ class TaskDataSourceImpl implements TaskDataSource {
   Future<Result<bool>> updateTaskStatus(
       String taskId, TaskStatus newStatus) async {
     try {
-      await _fireStore
-          .collection(_collectionName)
-          .doc(taskId)
-          .update(_toTaskStatusJson(newStatus));
+      WriteBatch batch = _fireStore.batch();
+
+      DocumentReference workerRef =
+          _fireStore.collection(_collectionName).doc(taskId);
+      batch.update(workerRef, _toTaskStatusJson(newStatus));
+
+      DocumentReference dashboardRef =
+          _fireStore.collection(_dashboardDetails).doc(_dashboardDetails);
+      if (newStatus == TaskStatus.completed) {
+        batch.update(dashboardRef, {'completedTasks': FieldValue.increment(1)});
+      } else if (newStatus == TaskStatus.pending ||
+          newStatus == TaskStatus.cancelled) {
+        batch.update(dashboardRef, {'pendingTasks': FieldValue.increment(1)});
+      } else if (newStatus == TaskStatus.approved) {
+        batch.update(dashboardRef, {'pendingTasks': FieldValue.increment(-1)});
+      }
+      await batch.commit();
       return Result.success(true);
     } on FirebaseException catch (e) {
       debugPrint('Firebase error updating task status: $e');
-      return Result.failure('Firebase error: ${e.message}');
-    } catch (e) {
-      debugPrint('Error updating task status: $e');
-      return Result.failure('An unexpected error occurred.');
+      return Result.error(e);
     }
   }
 

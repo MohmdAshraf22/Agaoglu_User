@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:tasks/core/utils/api_handler.dart';
+import 'package:tasks/core/utils/firebase_result_handler.dart';
 import 'package:tasks/modules/task/data/model/task.dart';
 import 'package:tasks/modules/task/data/repository/task_repo.dart';
 
@@ -66,18 +66,16 @@ class TaskCubit extends Cubit<TaskState> {
 
   Future<void> startTask(String taskId) async {
     emit(TaskOperationLoading());
-    final result = await _taskRepository.startTask(taskId); // Change
+    final result = await _taskRepository.startTask(taskId);
     _handleResult(result, 'start');
   }
 
   void _handleResult(Result<bool> result, String action) {
-    if (result.data == true) {
+    if (result is Success<bool>) {
       debugPrint('Task $action successful');
       emit(TaskOperationSuccess());
-    } else {
-      emit(TaskOperationError(
-          errorMessage: 'Failed to $action task: ${result.errorMessage}'));
-      debugPrint('Failed to $action task: ${result.errorMessage}');
+    } else if (result is Error<bool>) {
+      emit(TaskOperationError(errorMessage: result.exception));
     }
   }
 

@@ -30,7 +30,7 @@ final class TaskOperationLoading extends TaskState {}
 final class TaskOperationSuccess extends TaskState {}
 
 final class TaskOperationError extends TaskState {
-  final String errorMessage;
+  final Exception errorMessage;
 
   const TaskOperationError({required this.errorMessage});
 
