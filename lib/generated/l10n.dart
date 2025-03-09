@@ -154,6 +154,116 @@ class S {
   String get cancelTask {
     return Intl.message('Cancel Task', name: 'cancelTask', desc: '', args: []);
   }
+
+  /// `Please enter password`
+  String get enterPassword {
+    return Intl.message(
+      'Please enter password',
+      name: 'enterPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get resetPassword {
+    return Intl.message(
+      'Reset Password',
+      name: 'resetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check your email`
+  String get checkYourEmail {
+    return Intl.message(
+      'Check your email',
+      name: 'checkYourEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A password reset link has been sent to your email address`
+  String get resetPasswordLinkSent {
+    return Intl.message(
+      'A password reset link has been sent to your email address',
+      name: 'resetPasswordLinkSent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get ok {
+    return Intl.message('OK', name: 'ok', desc: '', args: []);
+  }
+
+  /// `Send Reset Link`
+  String get sendResetLink {
+    return Intl.message(
+      'Send Reset Link',
+      name: 'sendResetLink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to login`
+  String get backToLogin {
+    return Intl.message(
+      'Back to login',
+      name: 'backToLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign In`
+  String get signIn {
+    return Intl.message('Sign In', name: 'signIn', desc: '', args: []);
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message('Email', name: 'email', desc: '', args: []);
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message('Password', name: 'password', desc: '', args: []);
+  }
+
+  /// `Please enter email`
+  String get enterEmail {
+    return Intl.message(
+      'Please enter email',
+      name: 'enterEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter valid email`
+  String get enterValidEmail {
+    return Intl.message(
+      'Please enter valid email',
+      name: 'enterValidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `forgot password?`
+  String get forgotPassword {
+    return Intl.message(
+      'forgot password?',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

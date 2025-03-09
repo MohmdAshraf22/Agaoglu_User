@@ -1,20 +1,15 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sizer/sizer.dart';
-import 'package:tasks/core/local/shared_prefrences.dart';
+import 'package:tasks/core/utils/app_initializer.dart';
 import 'package:tasks/core/utils/color_manager.dart';
-import 'package:tasks/core/utils/localization_manager.dart';
 import 'package:tasks/generated/l10n.dart';
 import 'package:tasks/modules/task/cubit/task_cubit.dart';
-import 'package:tasks/modules/task/ui/screen/tasks_screen.dart'; // Correct import
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  await CacheHelper.init();
-  await LocalizationManager.init();
+  await AppInitializer.init();
   runApp(const MyApp());
 }
 
@@ -28,7 +23,7 @@ class MyApp extends StatelessWidget {
         create: (context) => TaskCubit(),
         child: MaterialApp(
           title: 'Task Management App',
-          locale: LocalizationManager.getCurrentLocale(),
+          locale: Locale("en"),
           localizationsDelegates: const [
             S.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -42,7 +37,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
             appBarTheme: AppBarTheme(surfaceTintColor: ColorManager.white),
           ),
-          home: TaskListScreen(),
+          home: AppInitializer.getFirstScreen(),
         ),
       );
     });

@@ -12,5 +12,18 @@
   "startTask": "Start Task",
   "approveTask": "Approve Task",
   "completeTask": "Complete Task",
-  "cancelTask": "Cancel Task"
+  "cancelTask": "Cancel Task",
+  "enterPassword": "Please enter password",
+  "resetPassword": "Reset Password",
+  "checkYourEmail": "Check your email",
+  "resetPasswordLinkSent": "A password reset link has been sent to your email address",
+  "ok": "OK",
+  "sendResetLink": "Send Reset Link",
+  "backToLogin": "Back to login",
+  "signIn": "Sign In",
+  "email": "Email",
+  "password": "Password",
+  "enterEmail": "Please enter email",
+  "enterValidEmail": "Please enter valid email",
+  "forgotPassword": "forgot password?"
 }

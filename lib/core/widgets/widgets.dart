@@ -89,3 +89,32 @@ String getTaskStatusLanguage(TaskStatus status, BuildContext context) {
       return S.of(context).completeTask;
   }
 }
+
+class SemiTransparentContainer extends StatelessWidget {
+  final double opacity;
+  final Widget child;
+  final double height;
+  final double width;
+  final double borderRadius;
+
+  const SemiTransparentContainer(
+      {super.key,
+      this.opacity = 0.4,
+      this.borderRadius = 20,
+      required this.child,
+      required this.height,
+      required this.width});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(borderRadius),
+        color: ColorManager.white.withOpacity(opacity),
+      ),
+      child: child,
+    );
+  }
+}

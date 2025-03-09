@@ -12,5 +12,18 @@
   "startTask": "Görevi Başlat",
   "approveTask": "Görevi Onayla",
   "completeTask": "Görevi Tamamla",
-  "cancelTask": "Görevi İptal Et"
+  "cancelTask": "Görevi İptal Et",
+  "enterPassword": "Lütfen şifre girin",
+  "resetPassword": "Şifreyi Sıfırla",
+  "checkYourEmail": "E-postanızı kontrol edin",
+  "resetPasswordLinkSent": "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi",
+  "ok": "Tamam",
+  "sendResetLink": "Sıfırlama Bağlantısı Gönder",
+  "backToLogin": "Girişe dön",
+  "signIn": "Giriş Yap",
+  "email": "E-posta",
+  "password": "Şifre",
+  "enterEmail": "Lütfen e-posta girin",
+  "enterValidEmail": "Lütfen geçerli bir e-posta girin",
+  "forgotPassword": "Şifrenizi mi unuttunuz?"
 }
