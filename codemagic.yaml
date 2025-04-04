@@ -1,0 +1,25 @@
+workflows:
+  ios-simulator-build:
+    name: iOS Simulator Build
+    environment:
+      flutter: stable
+      cocoapods: default
+      xcode: latest
+    scripts:
+      - name: Set up Flutter
+        script: |
+          flutter doctor -v
+          flutter pub get
+
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios
+          pod install --repo-update
+          cd ..
+
+      - name: Build for iOS Simulator
+        script: |
+          flutter build ios --simulator
+
+    artifacts:
+      - build/ios/iphonesimulator/Runner.app
