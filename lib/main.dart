@@ -6,6 +6,7 @@ import 'package:tasks/core/utils/app_initializer.dart';
 import 'package:tasks/core/utils/color_manager.dart';
 import 'package:tasks/generated/l10n.dart';
 import 'package:tasks/modules/task/cubit/task_cubit.dart';
+import 'package:tasks/modules/user/cubit/user_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,11 +20,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
-      return BlocProvider(
-        create: (context) => TaskCubit(),
+      return MultiBlocProvider(
+        providers: [
+          BlocProvider<TaskCubit>(
+            create: (context) => TaskCubit(),
+          ),
+          BlocProvider<UserCubit>(
+            create: (context) => UserCubit.get(),
+          ),
+        ],
         child: MaterialApp(
-          title: 'Task Management App',
-          locale: Locale("en"),
+          title: 'Görev Yönetimi',
+          locale: Locale("tr"),
           localizationsDelegates: const [
             S.delegate,
             GlobalMaterialLocalizations.delegate,

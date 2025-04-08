@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import 'package:tasks/core/routing/navigation_manager.dart';
 import 'package:tasks/core/utils/color_manager.dart';
 import 'package:tasks/core/utils/text_styles_manager.dart';
 import 'package:tasks/core/widgets/widgets.dart';
@@ -9,6 +10,9 @@ import 'package:tasks/generated/l10n.dart';
 import 'package:tasks/modules/task/data/model/task.dart';
 import 'package:tasks/modules/task/cubit/task_cubit.dart';
 import 'package:tasks/modules/task/ui/widgets/custom_task_card.dart';
+
+import '../../../user/cubit/user_cubit.dart';
+import '../../../user/ui/screen/login_screen.dart';
 
 class TaskListScreen extends StatefulWidget {
   const TaskListScreen({super.key});
@@ -43,7 +47,18 @@ class _TaskListScreenState extends State<TaskListScreen> {
       backgroundColor: ColorManager.greyLight,
       title: Text(S.of(context).taskList, style: TextStylesManager.authTitle),
       actions: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.account_circle))
+        BlocListener<UserCubit, UserState>(
+          listener: (context, state) {
+            if (state is LogoutSuccessState) {
+              context.pushAndRemove(LoginScreen());
+            }
+          },
+          child: IconButton(
+              onPressed: () {
+                context.read<UserCubit>().logout();
+              },
+              icon: const Icon(Icons.logout)),
+        )
       ],
       elevation: 4,
     );

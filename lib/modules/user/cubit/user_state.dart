@@ -34,10 +34,8 @@ class LoginLoadingState extends UserState {
 }
 
 class LoginSuccessState extends UserState {
-  final Worker worker;
-  const LoginSuccessState(this.worker);
   @override
-  List<Object> get props => [worker];
+  List<Object> get props => [];
 }
 
 final class LogoutLoadingState extends UserState {
