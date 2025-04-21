@@ -25,5 +25,22 @@
   "password": "Şifre",
   "enterEmail": "Lütfen e-posta girin",
   "enterValidEmail": "Lütfen geçerli bir e-posta girin",
-  "forgotPassword": "Şifrenizi mi unuttunuz?"
+  "forgotPassword": "Şifrenizi mi unuttunuz?",
+  "profile": "Profil",
+  "editProfile": "Profili Düzenle",
+  "save": "Kaydet",
+  "leaveEmptyToKeepCurrent": "Mevcut değişiklikleri korumak için bos bırakın",
+  "cancel": "Iptal Et",
+  "personalInformation": "Kişisel Bilgiler",
+  "name": "Adı",
+  "surname": "Soyadı",
+  "job": "Meslek",
+  "emailAddress": "E-posta Adresi",
+  "phoneNumber": "Telefon Numarası",
+  "enterName": "Lütfen adınızı girin",
+  "surName": "Soyadınız",
+  "enterSurname": "Lütfen soyadınızı girin",
+  "enterPhone": "Lütfen telefon numaranızı girin",
+  "newPassword": "Yeni Şifre",
+  "profileUpdatedSuccessfully": "Profiliniz başarıyla güncellendi"
 }

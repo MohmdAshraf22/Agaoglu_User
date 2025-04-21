@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "approvedTasks": MessageLookupByLibrary.simpleMessage("Onaylanan Görevler"),
     "assignedToYou": MessageLookupByLibrary.simpleMessage("Size Atandı"),
     "backToLogin": MessageLookupByLibrary.simpleMessage("Girişe dön"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Iptal Et"),
     "cancelTask": MessageLookupByLibrary.simpleMessage("Görevi İptal Et"),
     "cancelled": MessageLookupByLibrary.simpleMessage("İptal Edildi"),
     "checkYourEmail": MessageLookupByLibrary.simpleMessage(
@@ -34,9 +35,18 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "completeTask": MessageLookupByLibrary.simpleMessage("Görevi Tamamla"),
     "completed": MessageLookupByLibrary.simpleMessage("Tamamlandı"),
+    "editProfile": MessageLookupByLibrary.simpleMessage("Profili Düzenle"),
     "email": MessageLookupByLibrary.simpleMessage("E-posta"),
+    "emailAddress": MessageLookupByLibrary.simpleMessage("E-posta Adresi"),
     "enterEmail": MessageLookupByLibrary.simpleMessage("Lütfen e-posta girin"),
+    "enterName": MessageLookupByLibrary.simpleMessage("Lütfen adınızı girin"),
     "enterPassword": MessageLookupByLibrary.simpleMessage("Lütfen şifre girin"),
+    "enterPhone": MessageLookupByLibrary.simpleMessage(
+      "Lütfen telefon numaranızı girin",
+    ),
+    "enterSurname": MessageLookupByLibrary.simpleMessage(
+      "Lütfen soyadınızı girin",
+    ),
     "enterValidEmail": MessageLookupByLibrary.simpleMessage(
       "Lütfen geçerli bir e-posta girin",
     ),
@@ -44,20 +54,37 @@ class MessageLookup extends MessageLookupByLibrary {
       "Şifrenizi mi unuttunuz?",
     ),
     "in_progress": MessageLookupByLibrary.simpleMessage("Devam Ediyor"),
+    "job": MessageLookupByLibrary.simpleMessage("Meslek"),
+    "leaveEmptyToKeepCurrent": MessageLookupByLibrary.simpleMessage(
+      "Mevcut değişiklikleri korumak için bos bırakın",
+    ),
+    "name": MessageLookupByLibrary.simpleMessage("Adı"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("Yeni Şifre"),
     "notAssigned": MessageLookupByLibrary.simpleMessage("Atanmadı"),
     "ok": MessageLookupByLibrary.simpleMessage("Tamam"),
     "password": MessageLookupByLibrary.simpleMessage("Şifre"),
     "pending": MessageLookupByLibrary.simpleMessage("Beklemede"),
     "pendingTasks": MessageLookupByLibrary.simpleMessage("Bekleyen Görevler"),
+    "personalInformation": MessageLookupByLibrary.simpleMessage(
+      "Kişisel Bilgiler",
+    ),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefon Numarası"),
+    "profile": MessageLookupByLibrary.simpleMessage("Profil"),
+    "profileUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Profiliniz başarıyla güncellendi",
+    ),
     "resetPassword": MessageLookupByLibrary.simpleMessage("Şifreyi Sıfırla"),
     "resetPasswordLinkSent": MessageLookupByLibrary.simpleMessage(
       "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi",
     ),
+    "save": MessageLookupByLibrary.simpleMessage("Kaydet"),
     "sendResetLink": MessageLookupByLibrary.simpleMessage(
       "Sıfırlama Bağlantısı Gönder",
     ),
     "signIn": MessageLookupByLibrary.simpleMessage("Giriş Yap"),
     "startTask": MessageLookupByLibrary.simpleMessage("Görevi Başlat"),
+    "surName": MessageLookupByLibrary.simpleMessage("Soyadınız"),
+    "surname": MessageLookupByLibrary.simpleMessage("Soyadı"),
     "taskList": MessageLookupByLibrary.simpleMessage("Görev Listesi"),
   };
 }
