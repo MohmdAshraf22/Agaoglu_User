@@ -81,7 +81,7 @@ class _EditWorkerProfileScreenState extends State<EditWorkerProfileScreen> {
         ),
         title: Text(
           S.of(context).editProfile,
-          style: TextStylesManager.authTitle,
+          style: TextStylesManager.whiteTitle,
         ),
       ),
       body: SingleChildScrollView(
