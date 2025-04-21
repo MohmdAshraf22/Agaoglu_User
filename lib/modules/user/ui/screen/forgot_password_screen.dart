@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tasks/core/error/exception_manager.dart';
 import 'package:tasks/core/routing/navigation_manager.dart';
+import 'package:tasks/core/utils/assets_manager.dart';
 import 'package:tasks/core/utils/color_manager.dart';
 import 'package:tasks/core/utils/text_styles_manager.dart';
 import 'package:tasks/core/widgets/widgets.dart';
@@ -41,7 +42,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(2.w),
                     child: ImageIcon(
-                      AssetImage("assets/icons/admin_panel_icon.png"),
+                      AssetImage(AssetsManager.logo),
                       color: ColorManager.white,
                     ),
                   ),
