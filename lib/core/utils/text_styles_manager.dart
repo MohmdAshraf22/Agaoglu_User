@@ -8,6 +8,11 @@ class TextStylesManager {
     fontWeight: FontWeight.w700,
     fontSize: 16.spa,
   );
+  static TextStyle whiteTitle = TextStyle(
+    color: ColorManager.white,
+    fontWeight: FontWeight.w700,
+    fontSize: 16.spa,
+  );
   static TextStyle cardTitle = TextStyle(
     color: ColorManager.black,
     fontWeight: FontWeight.w700,

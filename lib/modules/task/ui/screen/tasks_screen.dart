@@ -4,15 +4,16 @@ import 'package:sizer/sizer.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:tasks/core/routing/navigation_manager.dart';
 import 'package:tasks/core/utils/color_manager.dart';
+import 'package:tasks/core/utils/constance_manger.dart';
 import 'package:tasks/core/utils/text_styles_manager.dart';
 import 'package:tasks/core/widgets/widgets.dart';
 import 'package:tasks/generated/l10n.dart';
-import 'package:tasks/modules/task/data/model/task.dart';
 import 'package:tasks/modules/task/cubit/task_cubit.dart';
+import 'package:tasks/modules/task/data/model/task.dart';
 import 'package:tasks/modules/task/ui/widgets/custom_task_card.dart';
+import 'package:tasks/modules/user/ui/screen/profile_screen.dart';
 
 import '../../../user/cubit/user_cubit.dart';
-import '../../../user/ui/screen/login_screen.dart';
 
 class TaskListScreen extends StatefulWidget {
   const TaskListScreen({super.key});
@@ -24,13 +25,17 @@ class TaskListScreen extends StatefulWidget {
 class _TaskListScreenState extends State<TaskListScreen> {
   late List<TaskModel> _filteredTasks = [];
   late TaskCubit _taskCubit;
+  late UserCubit _userCubit;
+
   bool _isApprovedTasksSelected = false;
 
   @override
   void initState() {
     super.initState();
     _taskCubit = context.read<TaskCubit>();
+    _userCubit = context.read<UserCubit>();
     _taskCubit.getTasks();
+    _userCubit.getUserInfo();
   }
 
   @override
@@ -47,18 +52,38 @@ class _TaskListScreenState extends State<TaskListScreen> {
       backgroundColor: ColorManager.greyLight,
       title: Text(S.of(context).taskList, style: TextStylesManager.authTitle),
       actions: [
-        BlocListener<UserCubit, UserState>(
-          listener: (context, state) {
-            if (state is LogoutSuccessState) {
-              context.pushAndRemove(LoginScreen());
-            }
-          },
-          child: IconButton(
-              onPressed: () {
-                context.read<UserCubit>().logout();
-              },
-              icon: const Icon(Icons.logout)),
-        )
+        SizedBox(
+          width: 18.w,
+          child: BlocBuilder<UserCubit, UserState>(
+            bloc: _userCubit,
+            builder: (context, state) {
+              return Skeletonizer(
+                enabled: state is GetUserInfoLoadingState,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                  child: Container(
+                    width: 8.w,
+                    height: 8.w,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: ColorManager.grey,
+                    ),
+                    child: GestureDetector(
+                      onTap: () => context.push(WorkerProfileScreen()),
+                      child: CircleAvatar(
+                        radius: 8.w,
+                        backgroundImage: _userCubit.worker == null
+                            ? NetworkImage(ConstanceManger.defaultImage)
+                            : NetworkImage(_userCubit.worker?.imageUrl ??
+                                ConstanceManger.defaultImage),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
       ],
       elevation: 4,
     );

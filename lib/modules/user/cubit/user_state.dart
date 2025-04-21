@@ -64,3 +64,26 @@ final class ResetPasswordLoadingState extends UserState {
   @override
   List<Object> get props => [];
 }
+
+class UpdateWorkerLoadingState extends UserState {
+  @override
+  List<Object?> get props => [];
+}
+
+class UpdateWorkerSuccessState extends UserState {
+  final Worker worker;
+
+  const UpdateWorkerSuccessState({required this.worker});
+
+  @override
+  List<Object?> get props => [worker];
+}
+
+class ImageSelectedState extends UserState {
+  final File image;
+
+  const ImageSelectedState({required this.image});
+
+  @override
+  List<Object?> get props => [image];
+}

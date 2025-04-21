@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import 'package:tasks/core/utils/color_manager.dart';
+import 'package:tasks/core/utils/text_styles_manager.dart';
 
 class AuthTextField extends StatelessWidget {
   final String? hintText;
@@ -64,6 +66,64 @@ class AuthTextField extends StatelessWidget {
       autofillHints: autoFillHints,
       keyboardType: keyboardType,
       style: TextStyle(color: ColorManager.white),
+    );
+  }
+}
+
+class CustomTextField extends StatelessWidget {
+  final TextEditingController controller;
+  final String hintText;
+  final Widget? prefixIcon;
+  final TextInputType? keyboardType;
+  final String? Function(String?)? validator;
+  final bool? obscureText;
+  final Widget? suffixIcon;
+  const CustomTextField({
+    super.key,
+    required this.controller,
+    required this.hintText,
+    this.prefixIcon,
+    this.keyboardType,
+    this.validator,
+    this.suffixIcon,
+    this.obscureText = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      obscureText: obscureText!,
+      controller: controller,
+      keyboardType: keyboardType,
+      validator: validator,
+      decoration: InputDecoration(
+        hintText: hintText,
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+        filled: true,
+        fillColor: ColorManager.white,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
+        ),
+      ),
+    );
+  }
+}
+
+class LabelText extends StatelessWidget {
+  final String text;
+
+  const LabelText({super.key, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 1.h),
+      child: Text(
+        text,
+        style: TextStylesManager.label,
+      ),
     );
   }
 }

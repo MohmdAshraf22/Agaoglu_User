@@ -25,5 +25,22 @@
   "password": "Password",
   "enterEmail": "Please enter email",
   "enterValidEmail": "Please enter valid email",
-  "forgotPassword": "forgot password?"
+  "forgotPassword": "forgot password?",
+  "profile": "Profile",
+  "editProfile": "Edit Profile",
+  "save": "Save",
+  "leaveEmptyToKeepCurrent": "Leave empty to keep current",
+  "cancel": "Cancel",
+  "personalInformation": "Personal Information",
+  "name": "Name",
+  "surname": "Surname",
+  "job": "Job",
+  "enterName": "Please enter name",
+  "emailAddress": "Email Address",
+  "phoneNumber": "Phone Number",
+  "surName": "Sur Name",
+  "enterSurname": "Please enter surname",
+  "enterPhone": "Please enter phone number",
+  "newPassword": "New Password",
+  "profileUpdatedSuccessfully": "Profile updated successfully"
 }
