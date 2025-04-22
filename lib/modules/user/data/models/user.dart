@@ -9,7 +9,7 @@ class Worker extends Equatable {
   final String categoryId;
   final String surname;
   final String phoneNumber;
-  final String imageUrl;
+  final String? imageUrl;
   final List<String> tasksIds;
   const Worker({
     required this.id,
@@ -25,7 +25,7 @@ class Worker extends Equatable {
   factory Worker.fromJson(DocumentSnapshot document) {
     final Map<String, dynamic> json = document.data() as Map<String, dynamic>;
     return Worker(
-      imageUrl: json['imageUrl'],
+      imageUrl: json['imageUrl']?? ConstanceManger.defaultImage,
       surname: json['surname'],
       phoneNumber: json['phoneNumber'],
       id: document.id,

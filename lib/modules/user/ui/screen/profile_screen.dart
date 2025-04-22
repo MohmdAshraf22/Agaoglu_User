@@ -15,8 +15,6 @@ class WorkerProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserCubit cubit = UserCubit.get();
-
-    // Load worker info if not loaded yet
     if (cubit.worker == null) {
       cubit.getUserInfo();
     }

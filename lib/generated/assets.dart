@@ -3,5 +3,6 @@ class Assets {
   Assets._();
 
   static const String iconsAdminPanelIcon = 'assets/icons/admin_panel_icon.png';
+  static const String iconsLogo = 'assets/icons/logo.png';
 
 }
