@@ -17,17 +17,17 @@ dependencies:
 
 
   cupertino_icons: ^1.0.8
-  flutter_bloc: ^9.0.0
+  flutter_bloc: any
   bloc:
   equatable: ^2.0.7
   firebase_auth: ^5.4.2
   fluttertoast: ^8.2.12
   connectivity_plus: ^6.1.3
-  skeletonizer: ^1.4.3
+  skeletonizer: ^2.0.1
   firebase_messaging: ^15.2.2
   sizer: ^3.0.5
   shared_preferences: ^2.5.2
-  intl:
+  intl: ^0.20.2
   flutter_intl: ^0.0.1
 
   # firebase

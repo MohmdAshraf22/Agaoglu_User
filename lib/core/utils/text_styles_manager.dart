@@ -4,7 +4,7 @@ import 'package:tasks/core/utils/color_manager.dart';
 
 class TextStylesManager {
   static TextStyle authTitle = TextStyle(
-    color: ColorManager.black,
+    color: ColorManager.white,
     fontWeight: FontWeight.w700,
     fontSize: 16.spa,
   );
