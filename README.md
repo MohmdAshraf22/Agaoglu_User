@@ -1,16 +1,33 @@
-# tasks
+# Task Management App
 
-A new Flutter project.
+Manage your team's tasks efficiently with real-time updates, voice notes, and full control for Admin and Workers.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## Features Overview
 
-A few resources to get you started if this is your first Flutter project:
+| ![Admin Dashboard](3.png) | ![Worker Task List](4.png) |
+|:----------------------------------------------:|:--------------------------------------------:|
+| **Admin Panel**                                | **Worker Panel**                             |
+| - Create, update, delete workers               | - Cancel, approve, complete tasks            |
+| - Create, update, delete tasks                  |                                              |
+| - Add images and voice notes to tasks           |                                              |
+| - Follow task status: In Progress, Canceled, Approved, Done |                                      |
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| ![Authentication](1.png) | ![Task Status Tracking](2.png) |
+|:-----------------------------------------:|:-----------------------------------------------:|
+| **Authentication**                        | **Task Status Tracking**                         |
+| - Separate auth for Admin & Worker apps   | - Monitor tasks progress & status                |
+| - Secure login and access control          | - Real-time status updates                         |
+
+---
+
+## User Base
+
+- Supports multiple workers with roles and permissions.
+- Length of user list can be managed efficiently.
+
+---
+
